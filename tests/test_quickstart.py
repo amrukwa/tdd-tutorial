@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 import pytest
 
@@ -12,7 +14,8 @@ def test_show_failure():
     assert False
 
 
-@pytest.mark.skip(reason="the test is not important at this point")
+# You should not make unconditional skips!
+@pytest.mark.skipif(sys.platform == "win32", reason="does not run on windows")
 def test_show_skip():
     assert quickstart.foo(1) == 2
 
@@ -44,3 +47,13 @@ def test_find_letters_raises_error_with_message():
 
 def test_get_pi_is_accurate():
     np.testing.assert_almost_equal(quickstart.get_pi(), np.pi, decimal=2)
+
+
+def test_choose_by_random_is_reproducible():
+    word = "always"
+    choice = quickstart.choose_by_random(word, seed=42)
+    assert quickstart.choose_by_random(word, seed=42) == choice
+    assert quickstart.choose_by_random(word, seed=42) == choice
+    word = "abcdefghijklmnopqrstuvwxyz"
+    choice = quickstart.choose_by_random(word, seed=42)
+    assert quickstart.choose_by_random(word, seed=42) == choice
