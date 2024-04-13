@@ -1,6 +1,9 @@
+import sys
+
 import pytest
 
-pytest.skip(allow_module_level=True)
+if sys.platform.startswith("win"):
+    pytest.skip("skipping windows-only tests", allow_module_level=True)
 
 
 def test_point_is_in_square():
