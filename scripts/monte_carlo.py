@@ -12,3 +12,19 @@
 # so the ratio of the number of points inside the circle
 # to the total number of points is pi/4, and Pi is 4 times this ratio.
 # The more points we generate, the more accurate the estimation will be.
+
+
+def generate_point(generator):
+    return 0
+
+
+def calculate_distance(point):
+    return 0
+
+
+def is_in_circle(distance):
+    return 0
+
+
+def monte_carlo(n_iter):
+    return 0
